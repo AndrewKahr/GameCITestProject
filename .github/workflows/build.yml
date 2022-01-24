@@ -31,7 +31,7 @@ jobs:
             Library-
       
       - name: Build Unity Project
-        uses: AndrewKahr/unity-builder@3496edfe47fcca772248e5a9cc31c063f6d718de
+        uses: AndrewKahr/unity-builder
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
