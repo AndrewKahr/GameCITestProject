@@ -3,6 +3,11 @@ name: Build
 on:  
   push:
   workflow_dispatch:
+     inputs:
+      jobId:
+        description: 'Job ID'
+        required: true
+        default: 'dryRun'
 
 jobs:
   buildForAllSupportedPlatforms:
