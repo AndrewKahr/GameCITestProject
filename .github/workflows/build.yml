@@ -1,0 +1,44 @@
+name: Build
+
+on:  
+  push:
+  workflow_dispatch:
+
+jobs:
+  buildForAllSupportedPlatforms:
+    name: Build Project for ${{ matrix.targetPlatform }}
+    runs-on: windows-2019
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneWindows
+          - StandaloneWindows64
+          - WSAPlayer
+          - tvOS
+      
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Restore Library Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ matrix.projectPath }}Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      
+      - name: Build Unity Project
+        uses: AndrewKahr/unity-builder@3496edfe47fcca772248e5a9cc31c063f6d718de
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+      
