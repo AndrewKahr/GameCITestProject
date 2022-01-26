@@ -10,8 +10,8 @@ on:
         default: 'dryRun'
 
 jobs:
-  buildForAllSupportedPlatforms:
-    name: Build Project for ${{ matrix.targetPlatform }}
+  windowsBuildForAllSupportedPlatforms:
+    name: Build Project for ${{ matrix.targetPlatform }} on Windows
     runs-on: windows-2019
     strategy:
       fail-fast: false
@@ -48,4 +48,43 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+
+  macBuildForAllSupportedPlatforms:
+    name: Build Project for ${{ matrix.targetPlatform }} on MacOS
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
       
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+
+      - name: Restore Library Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ matrix.projectPath }}Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      
+      - name: Build Unity Project
+        uses: AndrewKahr/unity-builder@main
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+      
+      - name: Check Unity Install
+        run: |
+              'ls /Applications/Unity/Hub/Editor/'
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
