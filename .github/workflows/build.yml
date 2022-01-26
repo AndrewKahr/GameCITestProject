@@ -29,10 +29,10 @@ jobs:
       - name: Restore Library Cache
         uses: actions/cache@v2
         with:
-          path: ${{ matrix.projectPath }}Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          path: Library
+          key: Library-windows-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-${{ matrix.projectPath }}-
+            Library-windows-
             Library-
       
       - name: Build Unity Project
@@ -65,10 +65,10 @@ jobs:
       - name: Restore Library Cache
         uses: actions/cache@v2
         with:
-          path: ${{ matrix.projectPath }}Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          path: Library
+          key: Library-mac-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-${{ matrix.projectPath }}-
+            Library-mac-
             Library-
       
       - name: Build Unity Project
