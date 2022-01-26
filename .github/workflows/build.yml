@@ -79,10 +79,6 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      
-      - name: Check Unity Install
-        run: |
-              'ls /Applications/Unity/Hub/Editor/'
 
       - uses: actions/upload-artifact@v2
         with:
