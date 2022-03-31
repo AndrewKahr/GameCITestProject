@@ -36,7 +36,7 @@ jobs:
             Library-
       
       - name: Build Unity Project
-        uses: paulpach/unity-builder:windowsfix
+        uses: paulpach/unity-builder@windowsfix
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
