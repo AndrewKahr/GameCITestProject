@@ -5,7 +5,7 @@ on:
 
 jobs:
   buildForLinuxBasedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+    name: Build for ${{ matrix.targetPlatform }} on Linux
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -23,7 +23,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles("./Library") }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -42,7 +42,7 @@ jobs:
           path: build
 
   buildForWindowsBasedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+    name: Build for ${{ matrix.targetPlatform }} on Windows
     runs-on: windows-2019
     strategy:
       fail-fast: false
@@ -60,7 +60,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles("./Library") }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -79,7 +79,7 @@ jobs:
           path: build
 
   buildForMacOSBasedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+    name: Build for ${{ matrix.targetPlatform }} on Mac
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -97,7 +97,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles("./Library") }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
