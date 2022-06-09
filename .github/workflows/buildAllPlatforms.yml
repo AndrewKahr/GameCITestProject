@@ -23,7 +23,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles(Library) }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -60,7 +60,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles(Library) }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -97,7 +97,7 @@ jobs:
         with:
           path: Library
           key:
-            Library-${{ matrix.targetPlatform }}-${{ hashFiles(Library) }}
+            Library-${{ matrix.targetPlatform }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
