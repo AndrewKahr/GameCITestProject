@@ -12,5 +12,5 @@ jobs:
       - run: |
           echo ${{ github.sha }}
           echo git rev-parse HEAD
-          echo git rev-list --count ${{ github.sha }}
-          echo git rev-list --count HEAD
+          git rev-list --count ${{ github.sha }}
+          git rev-list --count HEAD
