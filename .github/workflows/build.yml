@@ -3,6 +3,8 @@ name: Build
 on:  
   push:
   workflow_dispatch:
+  pull_request:
+    
 
 jobs:
   run:
@@ -19,3 +21,5 @@ jobs:
           git rev-list --count ${{ github.sha }}
           git rev-list --count HEAD
           git status
+          git describe --long --tags --always ${{ github.sha }}
+          git describe --long --tags --always HEAD
