@@ -22,7 +22,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles('Library') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles('Library') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
@@ -96,7 +96,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles("Library") }}
+          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles('Library') }}
           restore-keys: |
             Library-${{ matrix.targetPlatform }}-
             Library-
