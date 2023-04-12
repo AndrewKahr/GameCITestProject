@@ -15,11 +15,16 @@ jobs:
     runs-on: windows-2019
       
     steps:
-      - run: |
+      - name: Run
+        id: outputStep
+        run: |
           if ("")
           {
-            echo hello
+            echo "jobId=hello" >> $GITHUB_OUTPUT
           } else
           {
-            echo goodbye
+            echo "jobId=goodbye" >> $GITHUB_OUTPUT
           }
+      
+      - run: |
+          echo "jobId: ${{ steps.outputStep.outputs.jobId }}"
