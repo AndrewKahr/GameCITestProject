@@ -20,10 +20,10 @@ jobs:
         run: |
           if ("")
           {
-            echo "jobId=hello" >> $GITHUB_OUTPUT
+            echo "jobId=hello" >> $Env:GITHUB_OUTPUT
           } else
           {
-            echo "jobId=goodbye" >> $GITHUB_OUTPUT
+            echo "jobId=goodbye" >> $Env:GITHUB_OUTPUT
           }
       
       - run: |
