@@ -11,76 +11,15 @@ on:
 
 jobs:
   windowsBuildForAllSupportedPlatforms:
-    name: Build Project for ${{ matrix.targetPlatform }} on Windows
+    name: Test Run
     runs-on: windows-2019
-    strategy:
-      fail-fast: false
-      matrix:
-        targetPlatform:
-          - StandaloneWindows
-          - StandaloneWindows64
-          - WSAPlayer
-          - tvOS
       
     steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
-
-      - name: Restore Library Cache
-        uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-windows-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-windows-
-            Library-
-      
-      - name: Build Unity Project
-        uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: ${{ matrix.targetPlatform }}
-      
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
-
-  macBuildForAllSupportedPlatforms:
-    name: Build Project for ${{ matrix.targetPlatform }} on MacOS
-    runs-on: macos-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        targetPlatform:
-          - StandaloneOSX
-      
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
-
-      - name: Restore Library Cache
-        uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-mac-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-mac-
-            Library-
-      
-      - name: Build Unity Project
-        uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          targetPlatform: ${{ matrix.targetPlatform }}
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+      - run: |
+          if ("")
+          {
+            echo hello
+          } else
+          {
+            echo goodbye
+          }
