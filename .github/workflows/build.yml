@@ -13,11 +13,11 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v4
       
-      #- name: Setup tmate session
-      #  uses: mxschmitt/action-tmate@v3
-      #  with:
-      #    detached: true
-      #    limit-access-to-actor: false
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+          limit-access-to-actor: false
       
       - name: Build Unity Project
         uses: game-ci/unity-builder@feature/windows-upgrades
