@@ -29,5 +29,4 @@ jobs:
           targetPlatform: Android
           androidExportType: androidAppBundle
           androidSymbolType: public
-          customImage: "madronagames/editor:windows-2022.3.1f1-android"
           buildMethod: UnityBuilderAction.Builder.BuildProject
