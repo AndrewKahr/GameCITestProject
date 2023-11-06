@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  windowsBuildAndroid:
-    name: Build Android
+  ubuntuBuild:
+    name: Build Ubuntu
     runs-on: ubuntu-latest
       
     steps:
