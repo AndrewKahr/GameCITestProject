@@ -20,7 +20,7 @@ jobs:
       #    limit-access-to-actor: false
       
       - name: Build Unity Project
-        uses: game-ci/unity-builder@main
+        uses: game-ci/unity-builder@github-annotations
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
