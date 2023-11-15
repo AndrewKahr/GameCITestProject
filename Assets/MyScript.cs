@@ -17,7 +17,5 @@ public class MyScript : MonoBehaviour
 
         int anothervar = 3;
         anothervar++;
-        
-        errorVar
     }
 }
