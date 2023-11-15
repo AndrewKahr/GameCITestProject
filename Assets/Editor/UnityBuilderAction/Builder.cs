@@ -14,8 +14,6 @@ namespace UnityBuilderAction
   {
     public static void BuildProject()
     {
-      EditorApplication.Exit(101);
-      
       // Gather values from args
       var options = ArgumentsParser.GetValidatedOptions();
 
